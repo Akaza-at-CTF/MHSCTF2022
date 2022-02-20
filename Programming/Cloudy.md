@@ -19,11 +19,13 @@ The formula to calculate probability is 1 minus the sum of all probabilities not
 
 ```python
 def main():
-  vals = map(int, raw_input().split())
-	complement = 1
-	for i in vals:
-		complement *= ((100-i)/100.0)
-	print(int((1-complement)*100))
+	numValues = input()
+	for i in range(0, numValues):
+		vals = map(int, input().split())
+		complement = 1
+		for i in vals:
+			complement *= ((100-i)/100.0)
+		print(int((1-complement)*100))
 
 main()
 ```
