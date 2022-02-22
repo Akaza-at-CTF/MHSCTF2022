@@ -18,22 +18,30 @@ Apply Euler's method.
 
 ```python
 def main():
-        numValues = input()
-        inputs = []
-        for i in range(0, numValues):
-                vals = raw_input()
-                inputs.append(vals)
-        for i in range(0, numValues):    
-                vals = map(float, inputs[i].split())
-                h = vals[0]
-                xt = vals[1]
-                y = 2
-                x = 5
-                steps = int(round(xt-x)/h) #get number of steps
-                for j in range(0, steps):
-                        y = y + h * (pow(x,2) - 6*pow(y,2))
-                        x = x + h
-                print("{:.1f}".format(y))
+  numValues = int(input())
+  for i in range(0, numValues):
+    val = list(map(float, input().split()))
+    h = val[0]
+    if h > 10: 
+      h = 10
+    elif h < -10:
+      h = -10
+    xt = val[1]
+    if xt > 10:
+      xt = 10
+    elif xt < -10:
+      xt = -10
+    y = 2
+    x = 5
+    steps = int(round(xt-x,1)/h) #rounding is necessary due to floating point error
+    for j in range(0, steps):
+      y = y + h * (pow(x, 2) - 6 * pow(y,2))
+      x = x + h
+    if y > 1000:
+      y = 1000
+    elif y < -1000:
+      y = -1000
+    print(round(y,1))
 
 main()
 ```
